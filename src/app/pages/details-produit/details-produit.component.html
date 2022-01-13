@@ -1,6 +1,12 @@
 
 <h1>Page d'affichage d'un produit</h1>
-<p>Id : {{getProduct(0).id}}</p>
-<p>Nom : {{getProduct(0).name}}</p>
-<p>Prix : {{getProduct(0).price}}</p>
+<p>Id : {{getProduct(1).id}}</p>
+<p>Nom : {{getProduct(1).name}}</p>
+<p>Prix : {{getProduct(1).price}}</p>
+<p>Stock : {{getProduct(1).quantity_stock}}</p>
+<input type="number" id="nStock" name="nStock"
+       minlength="1" maxlength="8" >
+<button (click)="this.putAddRemoveStockProduct(1, true, 1)">add click</button>
+<button (click)="this.putAddRemoveStockProduct(1, false, 1)">remove click</button>
+
 

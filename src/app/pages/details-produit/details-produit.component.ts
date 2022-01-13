@@ -23,7 +23,43 @@ export class DetailsProduitComponent implements OnInit {
 	}
 
 	getProduct(id : number){
-		return this.listeProduits[id];
+		for(let i=0; i<this.listeProduits.length; i++){
+			if(this.listeProduits[i]["id"] == id)	return this.listeProduits[i];
+		}
+		return {
+			comments: "",
+			category: 0,
+			availability: false,
+			id: -1,
+			price: 0,
+			price_on_sale: 0,
+			discount: 0,
+			sale: false,
+			owner: "",
+			unit: "",
+			name: "",
+			quantity_stock: 0,
+			quantity_sold: 0
+		}
+	}
+
+	putAddRemoveStockProduct(id: number, add: boolean, n: number){
+		let tmpProduct = this.getProduct(id);
+		if(add)	tmpProduct["quantity_stock"] += n
+		else	tmpProduct["quantity_stock"] -= n
+
+		this.productsService
+			.putProductFromJson(tmpProduct)
+			.subscribe(product => console.log(product))
+	}
+
+	putUpdatePromotionProduct(id: number, n: number){
+		let tmpProduct = this.getProduct(id);
+		tmpProduct["discount"] = n
+
+		this.productsService
+			.putProductFromJson(tmpProduct)
+			.subscribe(product => console.log(product))
 	}
 
 	ngOnInit(): void {
