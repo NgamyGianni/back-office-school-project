@@ -10,6 +10,9 @@ export class DetailsProduitComponent implements OnInit {
 
 	title = 'details produits';
 	listeProduits: Product[] = [];
+	selectedProductID: number=1;
+	product: Product = {}
+
 
 	constructor(public productsService : ProductsService) { }
 
@@ -23,8 +26,18 @@ export class DetailsProduitComponent implements OnInit {
 	}
 
 	getProduct(id : number){
-		return this.listeProduits[id];
+		let toReturnProduit:Product = {}
+		this.listeProduits.forEach(produit => {
+			if (produit.id == id){
+				 toReturnProduit = produit;
+			}
+		});
+		return toReturnProduit
 	}
+
+	changeProduct(){
+		this.product = this.getProduct(this.selectedProductID)
+	  }
 
 	ngOnInit(): void {
 		this.getProducts();

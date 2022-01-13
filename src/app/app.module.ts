@@ -9,6 +9,7 @@ import { HeaderComponent } from './features/header/header.component';
 import { FooterComponent } from './features/footer/footer.component';
 import { DetailsProduitComponent } from './pages/details-produit/details-produit.component';
 import { ProductsService } from '../app/core/services/products.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ProductsService } from '../app/core/services/products.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [ProductsService],
   bootstrap: [AppComponent]

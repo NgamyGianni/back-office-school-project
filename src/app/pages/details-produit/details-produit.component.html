@@ -1,6 +1,18 @@
 
 <h1>Page d'affichage d'un produit</h1>
-<p> Id : {{getProduct(0).id}}</p>
-<p>Nom : {{getProduct(0).name}}</p>
-<p>Prix : {{getProduct(0).price}}</p>
+<select [(ngModel)]="selectedProductID" (change)="changeProduct()">
+    <option *ngFor="let produit of listeProduits" [value]="produit.id" >{{produit.name}}</option>
+</select>
+<div>
+    <div>Nom : {{getProduct(selectedProductID).name}}</div>
+    <div>Unité : {{getProduct(selectedProductID).unit}}</div>
+    <div>Prix de vente : {{getProduct(selectedProductID).price_on_sale}} €</div>
+    <div>Prix réel: {{getProduct(selectedProductID).price}} €</div>
+    <div>Remise de prix : {{getProduct(selectedProductID).discount}} %</div>
+    <div>Produit vendu : {{getProduct(selectedProductID).quantity_sold}}</div>
+    <div>Stock Disponible : {{getProduct(selectedProductID).quantity_stock}}</div>
+    <div>Propriétaire: {{getProduct(selectedProductID).owner}}</div>
+    <div>Commentaire: {{getProduct(selectedProductID).comments}}</div>
+
+</div>
 
