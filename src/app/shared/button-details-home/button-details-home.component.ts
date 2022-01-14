@@ -1,4 +1,4 @@
-import { Component, OnInit,Output,EventEmitter } from '@angular/core';
+import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-button-details-home',
@@ -6,13 +6,21 @@ import { Component, OnInit,Output,EventEmitter } from '@angular/core';
   styleUrls: ['./button-details-home.component.css']
 })
 export class ButtonDetailsHomeComponent implements OnInit {
-
+  displayList!:boolean;
+  @Output() getDetailsProduct = new EventEmitter<boolean>();
   constructor() { }
 
   ngOnInit(): void {
+    //this.displayList=false
   }
   onGetDetailsProducts(){
-    console.log("I clicked get details products")
+      console.log("I clicked get details products")
+     this.displayList=true;
+     this.getDetailsProduct.emit(this.displayList)
+    
+  }
+  test(){
+    console.log("test");
   }
 
 }
