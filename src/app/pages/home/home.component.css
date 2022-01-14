@@ -1,0 +1,11 @@
+h1 {
+  margin-top: 50px;
+  text-align: center;
+}
+.group-btns {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}

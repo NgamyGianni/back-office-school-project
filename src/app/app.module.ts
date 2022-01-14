@@ -9,7 +9,8 @@ import { HeaderComponent } from './features/header/header.component';
 import { FooterComponent } from './features/footer/footer.component';
 import { DetailsProduitComponent } from './pages/details-produit/details-produit.component';
 import { ProductsService } from '../app/core/services/products.service';
-import { FormsModule } from '@angular/forms';
+import { ButtonDetailsHomeComponent } from './shared/button-details-home/button-details-home.component';
+import { ButtonManageHomeComponent } from './shared/button-manage-home/button-manage-home.component';
 
 @NgModule({
   declarations: [
@@ -17,13 +18,14 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    DetailsProduitComponent
+    DetailsProduitComponent,
+    ButtonDetailsHomeComponent,
+    ButtonManageHomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    FormsModule
+    HttpClientModule
   ],
   providers: [ProductsService],
   bootstrap: [AppComponent]
