@@ -43,6 +43,15 @@ export class DetailsProduitComponent implements OnInit {
 		}
 	}
 
+	getProductsByCategory(category: number){
+		let resTab = [];
+		for(let i=0; i<this.listeProduits.length; i++){
+			if(this.listeProduits[i]["category"] == category)	resTab.push(this.listeProduits[i]);
+		}
+
+		return resTab;
+	}
+
 	putAddRemoveStockProduct(id: number, add: boolean, n: number){
 		let tmpProduct = this.getProduct(id);
 		if(add)	tmpProduct["quantity_stock"] += n
@@ -60,6 +69,18 @@ export class DetailsProduitComponent implements OnInit {
 		this.productsService
 			.putProductFromJson(tmpProduct)
 			.subscribe(product => console.log(product))
+	}
+
+	putAddRemoveStockProducts(products: number[], add: boolean, n: number){
+		for(let i=0; i < products.length; i++){
+			this.putAddRemoveStockProduct(products[i], add, n);
+		}
+	}
+
+	putUpdatePromotionProducts(products: number[], n: number){
+		for(let i=0; i < products.length; i++){
+			this.putUpdatePromotionProduct(products[i], n);
+		}
 	}
 
 	ngOnInit(): void {
