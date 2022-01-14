@@ -6,21 +6,21 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductsService {
 
-	url = "../../../assets/data/products.json";
+	url = "http://127.0.0.1:8000/products/?format=json";
 
 	constructor(private http: HttpClient) { 
 
 	}
 
 	getProductsFromJson(){
-	return this.http
-		.get<Product[]>(this.url);
+		return this.http
+			.get<Product[]>(this.url);
 	}
 
 	putProductFromJson(product : Product){
-	return this.http.put<Product>(this.url, product)
-		.pipe(
-		);
+		return this.http.put<Product>(this.url, product)
+			.pipe(
+			);
 	}
 }
 
