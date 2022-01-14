@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-button-details-home',
@@ -11,7 +11,7 @@ export class ButtonDetailsHomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  getDetailsProducts(){
+  onGetDetailsProducts(){
     console.log("I clicked get details products")
   }
 
