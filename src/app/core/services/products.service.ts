@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductsService {
+  url = "../../../assets/data/products.json";
   constructor(private http: HttpClient) { 
 
   }
@@ -13,6 +14,12 @@ export class ProductsService {
   getProductsFromJson():Observable<Product[]>{
   	return this.http.get<Product[]>("../../../assets/data/products.json");
   }
+
+  putProductFromJson(product : Product){
+    return this.http.put<Product>(this.url, product)
+        .pipe(
+        );
+    }
 }
 
 // export interface Product{

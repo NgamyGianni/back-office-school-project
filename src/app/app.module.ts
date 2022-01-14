@@ -11,6 +11,7 @@ import { DetailsProduitComponent } from './pages/details-produit/details-produit
 import { ProductsService } from '../app/core/services/products.service';
 import { ButtonDetailsHomeComponent } from './shared/button-details-home/button-details-home.component';
 import { ButtonManageHomeComponent } from './shared/button-manage-home/button-manage-home.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ButtonManageHomeComponent } from './shared/button-manage-home/button-ma
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [ProductsService],
   bootstrap: [AppComponent]
