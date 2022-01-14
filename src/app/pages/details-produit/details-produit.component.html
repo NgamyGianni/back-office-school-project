@@ -1,6 +1,26 @@
 
 <h1>Page d'affichage d'un produit</h1>
-<p>Id : {{getProduct(0).id}}</p>
-<p>Nom : {{getProduct(0).name}}</p>
-<p>Prix : {{getProduct(0).price}}</p>
-
+<select [(ngModel)]="selectedProductID" (change)="changeProduct()">
+    <option *ngFor="let produit of listeProduits" [value]="produit.id" >{{produit.name}}</option>
+</select>
+<div>
+    <div>Nom : {{product.name}}</div>
+    <div>Unité : {{product.unit}}</div>
+    <div>Prix de vente : {{product.price_on_sale}} €</div>
+    <div>Prix réel: {{product.price}} €</div>
+    <div>Remise de prix : {{product.discount}} %</div>
+    <div>Produit vendu : {{product.quantity_sold}}</div>
+    <div>Stock Disponible : {{product.quantity_stock}}</div>
+    <div>Propriétaire: {{product.owner}}</div>
+    <div>Commentaire: {{product.comments}}</div>
+    <div>
+        <div>
+            <input type="number" id="nStock" name="nStock" min=-{{product.quantity_stock}} minlength="1" maxlength="8" [(ngModel)]="addStockProductNumber">
+            <button (click)="this.putAddRemoveStockProduct()">Modifier Quantité Produit</button>
+        </div>
+        <div>
+            <input type="number" id="nDiscount" name="nDiscount" min=0 max=100 minlength="1" maxlength="8" value="{{product.discount}}" [(ngModel)]="addDiscountNumber">
+            <button (click)="this.putUpdatePromotionProduct()">Modifier Promotion</button>
+        </div>
+    </div>
+</div>
