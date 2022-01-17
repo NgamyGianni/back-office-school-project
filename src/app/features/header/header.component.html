@@ -1,6 +1,16 @@
-<ul >
-	<li><a routerLink="/home">Home</a></li>
-	<li><a routerLink="/details">Détails produits</a></li>
-	<li><a routerLink="/home">Tableaux produits</a></li>
-	<li><a routerLink="/home">données à l'historique</a></li>
-</ul>
+<header class="header-links">
+	<a [ngStyle]="router.url=='/home'?background:{}" routerLink="/home">
+		<p>Home</p>
+	</a>
+	<a [ngStyle]="router.url=='/details'?background:{}" routerLink="/details">
+		<p>Détails produits</p> 
+	</a> 
+	<a routerLink="/home"> 
+		<p> Tableaux produits </p> 
+	</a> 
+	<a routerLink="/home"> 
+		<p> données à l'historique</p> 
+	</a>
+
+</header>
+{{backgroundLink()}}
