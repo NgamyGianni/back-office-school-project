@@ -54,8 +54,8 @@ export class DetailsProduitComponent implements OnInit {
 
 	putAddRemoveStockProduct(id: number, add: boolean, n: number){
 		let tmpProduct = this.getProduct(id);
-		if(add)	tmpProduct["quantity_stock"] += n
-		else	tmpProduct["quantity_stock"] -= n
+		if(add)	tmpProduct["quantity_stock"] = n
+		else	tmpProduct["quantity_stock"] = n
 
 		this.productsService
 			.putProductFromJson(tmpProduct)

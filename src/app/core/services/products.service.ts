@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductsService {
 
-	url = "http://127.0.0.1:8000/products/?format=json";
+	url = "http://127.0.0.1:8000/products/";
 
 	constructor(private http: HttpClient) { 
 
