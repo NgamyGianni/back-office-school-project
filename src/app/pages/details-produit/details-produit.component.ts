@@ -12,7 +12,7 @@ export class DetailsProduitComponent implements OnInit {
 
 	title = 'details produits';
 	listeProduits: Product[] = [];
-	selectedProductID: number=1;
+	selectedProductID: String="Huitres N°2 St Vaast";
 	product: Product = {};
 	addStockProductNumber: number = 1;
 	addDiscountNumber: number = 0;
@@ -26,17 +26,18 @@ export class DetailsProduitComponent implements OnInit {
 			next:(res: Product[]) => {
 				this.listeProduits = res;
 				this.product = this.getProduct(this.selectedProductID);
+				console.log(res)
 			},
 			error:(err) => {
-				alert('failed loading json data');
+				alert('failed loading api data');
 			}
 		});
 	}
 
-	getProduct(id : number){
+	getProduct(name : String){
 		let toReturnProduit:Product = {}
 		this.listeProduits.forEach(produit => {
-			if (produit.id == id){
+			if (produit.name == name){
 				 toReturnProduit = produit;
 			}
 		});
