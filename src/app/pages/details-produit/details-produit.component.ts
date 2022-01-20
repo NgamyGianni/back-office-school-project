@@ -12,7 +12,7 @@ export class DetailsProduitComponent implements OnInit {
 
 	title = 'details produits';
 	listeProduits: Product[] = [];
-	selectedProductID: String="Huitres N°2 St Vaast";
+	selectedProductID: number= 1;
 	product: Product = {};
 	addStockProductNumber: number = 1;
 	addDiscountNumber: number = 0;
@@ -26,7 +26,6 @@ export class DetailsProduitComponent implements OnInit {
 			next:(res: Product[]) => {
 				this.listeProduits = res;
 				this.product = this.getProduct(this.selectedProductID);
-				console.log(res)
 			},
 			error:(err) => {
 				alert('failed loading api data');
@@ -34,10 +33,10 @@ export class DetailsProduitComponent implements OnInit {
 		});
 	}
 
-	getProduct(name : String){
+	getProduct(id : number){
 		let toReturnProduit:Product = {}
 		this.listeProduits.forEach(produit => {
-			if (produit.name == name){
+			if (produit.id == id){
 				 toReturnProduit = produit;
 			}
 		});
@@ -53,18 +52,23 @@ export class DetailsProduitComponent implements OnInit {
 		}
 
 		this.productsService
-			.putProductFromJson(this.product)
+			.putProductFromJson(this.product, this.selectedProductID)
 			.subscribe(product => console.log(product))
 	}
 
 	putUpdatePromotionProduct(){
 		this.product["discount"] = this.addDiscountNumber
-		if(this.product.price!=undefined){
-			this.product.price_on_sale = this.product.price - ((this.product.price*this.addDiscountNumber)/100)
+		if(this.product["discount"] >= 0 && this.product["discount"] <= 100){
+			if(this.product.price!=undefined){
+				this.product.price_on_sale = this.product.price - ((this.product.price*this.addDiscountNumber)/100)
+			}
+			this.productsService
+				.putProductFromJson(this.product, this.selectedProductID)
+				.subscribe(product => console.log(product))
 		}
-		this.productsService
-			.putProductFromJson(this.product)
-			.subscribe(product => console.log(product))
+		else{
+			alert('0 <= Promotion <= 100');
+		}
 	}
 
 	changeProduct(){

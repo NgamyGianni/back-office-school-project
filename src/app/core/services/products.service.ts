@@ -16,8 +16,8 @@ export class ProductsService {
   	return this.http.get<Product[]>(this.url+"products/");
   }
 
-  putProductFromJson(product : Product){
-    return this.http.put<Product>(this.url, product)
+  putProductFromJson(product : Product, id : number){
+    return this.http.put<Product>(this.url+"product/"+id, product)
         .pipe(
         );
     }
