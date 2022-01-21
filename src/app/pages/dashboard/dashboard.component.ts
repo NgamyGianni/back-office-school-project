@@ -62,6 +62,7 @@ export class DashboardComponent implements OnInit {
 	}
 
 	calculateNetIncome(){
+		this.montantImpot = 0;
 		this.depense = 0;
 		this.listePurchases.forEach(purchase => {
 			if(purchase.price != undefined && purchase.date != undefined && this.year == purchase.date.toString().substring(0, 4))	this.depense += purchase.price;

@@ -23,10 +23,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     DetailsProduitComponent,
     ButtonDetailsHomeComponent,
     ButtonManageHomeComponent,
-<<<<<<< HEAD
     DashboardComponent
-=======
->>>>>>> 52c64f6b95e3c0e3563142f8ce36e62244d238fe
   ],
   imports: [
     BrowserModule,
