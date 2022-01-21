@@ -12,6 +12,8 @@ import { ProductsService } from '../app/core/services/products.service';
 import { ButtonDetailsHomeComponent } from './shared/button-details-home/button-details-home.component';
 import { ButtonManageHomeComponent } from './shared/button-manage-home/button-manage-home.component';
 import { FormsModule } from '@angular/forms';
+import { ManageStocksComponent } from './pages/manage-stocks/manage-stocks.component';
+import { VarDirective } from './var.directive';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     DetailsProduitComponent,
     ButtonDetailsHomeComponent,
-    ButtonManageHomeComponent
+    ButtonManageHomeComponent,
+    ManageStocksComponent,
+    VarDirective
   ],
   imports: [
     BrowserModule,

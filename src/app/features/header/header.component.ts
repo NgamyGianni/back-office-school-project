@@ -10,20 +10,5 @@ export class HeaderComponent implements OnInit {
   constructor(public router:Router) { }
 
   ngOnInit(): void {
+  }   
   }
-  backgroundLink(){
-    if(this.router.url=="/home"){
-       this.background={
-                        "background-color":"aqua",
-                        "color":"black"
-                      }
-    }
-    else if (this.router.url=="/details"){
-       this.background={
-                        "background-color":"aqua"
-                        ,"color":"black"
-                      }
-    }
-    
-  }
-}

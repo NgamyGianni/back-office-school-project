@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { DetailsProduitComponent } from './pages/details-produit/details-produit.component';
 import { AppComponent } from './app.component';
+import { ManageStocksComponent } from './pages/manage-stocks/manage-stocks.component';
 
 const routes: Routes = [
 	{ path: 'home', component: HomeComponent },
 	{ path: 'details', component: DetailsProduitComponent },
+	{ path: 'manageStocks', component: ManageStocksComponent },
 	/*{ path: '', component: AppComponent }*/
 ];
 
