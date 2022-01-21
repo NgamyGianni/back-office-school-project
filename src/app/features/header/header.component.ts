@@ -7,27 +7,12 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   background: Record<string, string>={};
+  colorText: Record<string, string>={};
   constructor(public router:Router) { }
 
   ngOnInit(): void {
-    this.background={
-                        "background-color":"aqua",
-                        "color":"green"
-                      }
+    this.background={"background-color":"aqua",}
+    this.colorText={"color":"black"}
   }
-//   backgroundLink(){
-//     if(this.router.url=="/home"){
-//        this.background={
-//                         // "background-color":"aqua",
-//                         "color":"black"
-//                       }
-//     }
-//     // else if (this.router.url=="/details"){
-//     //    this.background={
-//     //                     "background-color":"aqua"
-//     //                     ,"color":"black"
-//     //                   }
-//     // }
-    
-//   }
+
  }

@@ -1,9 +1,9 @@
 <header class="header-links">
 	<a [ngStyle]="router.url=='/home'?background:{}" routerLink="/home">
-		<p>Home {{router.url=='/home'}}</p>
+		<p [ngStyle]="router.url=='/home'?colorText:{}">Home </p>
 	</a>
 	<a [ngStyle]="router.url=='/details'?background:{}" routerLink="/details">
-		<p>Détails produits</p> 
+		<p [ngStyle]="router.url=='/details'?colorText:{}">Détails produits</p> 
 	</a> 
 	<a routerLink="/home"> 
 		<p> Tableaux produits </p> 
@@ -13,4 +13,3 @@
 	</a>
 
 </header>
-{{router.url}}
