@@ -12,7 +12,12 @@ import { ProductsService } from '../app/core/services/products.service';
 import { ButtonDetailsHomeComponent } from './shared/button-details-home/button-details-home.component';
 import { ButtonManageHomeComponent } from './shared/button-manage-home/button-manage-home.component';
 import { FormsModule } from '@angular/forms';
+<<<<<<< HEAD
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+=======
+import { ManageStocksComponent } from './pages/manage-stocks/manage-stocks.component';
+import { VarDirective } from './var.directive';
+>>>>>>> dev-page-tableau
 
 @NgModule({
   declarations: [
@@ -23,7 +28,12 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     DetailsProduitComponent,
     ButtonDetailsHomeComponent,
     ButtonManageHomeComponent,
+<<<<<<< HEAD
     DashboardComponent
+=======
+    ManageStocksComponent,
+    VarDirective
+>>>>>>> dev-page-tableau
   ],
   imports: [
     BrowserModule,

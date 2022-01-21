@@ -8,12 +8,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductsService {
+  productCategory: { [id:number]: string } = {0:"Poissons", 1:"Fruits de Mer", 2:"Crustaces"};
   //url = "../../../assets/data/products.json";
   url = 'http://127.0.0.1:8000/';
   constructor(private http: HttpClient) { 
 
   }
 
+getProductCategory(){
+  return this.productCategory;
+}
   getProductsFromJson():Observable<Product[]>{
   	return this.http.get<Product[]>(this.url+"products/");
   }
@@ -31,6 +35,7 @@ export class ProductsService {
         .pipe(
         );
     }
+<<<<<<< HEAD
 
    postSaleFromJson(sale : Sale){
    		return this.http.post<Sale>(this.url+"sales/", sale);
@@ -40,9 +45,20 @@ export class ProductsService {
    		return this.http.post<Purchase>(this.url+"purchases/", purchase);
    }
 }
+=======
+>>>>>>> dev-page-tableau
 
-// export interface Product{
-// 	name: String,
-// 	id: number,
-// 	price: number,
-// }
+    putStockProduct(product: Product){
+      
+    }
+
+    putPromotionProduct(product: Product){
+
+    }
+
+    postProductFromJson(product : Product){
+      return this.http.put<Product>(this.url, product)
+          .pipe(
+          );
+      }
+}
