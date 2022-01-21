@@ -14,7 +14,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
   onGetDetailsProduct(displayList:boolean){
-    this.onDisplayList=false
+    console.log(displayList, "show the result")
+    this.onDisplayList=displayList
     console.log("Received an event from the component btn-details", displayList)
     this.productsService.getProductsFromJson()
           .subscribe({
