@@ -35,66 +35,90 @@ export class ManageStocksComponent implements OnInit {
 		});
 	}
 
-	getProductsById(produitList:Product[]){
-		console.log(produitList)
-	
-		return null
-    }
-
 
 getCategoryName(n:number){
 	let correspondance = this.productsService.productCategory;
-	console.log(correspondance[n])
 }
 
 
 addToUpdateQuantitylist(e:any,produit:Product){
-	let newQuantity = e.target.value
-	let index = this.toUpdateProductList.indexOf(produit)
-
-
-	if(index > -1){
-		if(newQuantity==null){
+	console.log(this.quantityModifyValue)
+	let newQuantity:number  = parseInt(e.target.value)
+	console.log(newQuantity)
+	let index:number = this.toUpdateProductList.indexOf(produit)
+	if(newQuantity==null){
+		if(index > -1){
 			this.toUpdateProductList.splice(index,1)
 		}
-		else{
-			this.toUpdateProductList[index].quantity_stock = newQuantity
+	}
+	else{
+		if(index > -1){
+			produit = this.toUpdateProductList[index]
+			if(produit.quantity_stock!=undefined){
+				produit.quantity_stock = produit.quantity_stock+newQuantity
+				if(produit.quantity_stock<0){
+					produit.quantity_stock = 0
+				}
+			}
+			this.toUpdateProductList[index] = produit
+		}
+		else if (index < 0 && newQuantity!=null){
+			if(produit.quantity_stock!=undefined){
+				produit.quantity_stock += newQuantity
+				if(produit.quantity_stock<0){
+					produit.quantity_stock = 0
+				}
+			}
+			this.toUpdateProductList.push(produit)
 		}
 	}
-	else if (index < 0 && newQuantity!=null){
-		produit.quantity_stock = newQuantity
-		this.toUpdateProductList.push(produit)
-	}	
 }
 
 
 updateProductsQuantityDiscount(){
+console.log(this.toUpdateProductList)
 this.toUpdateProductList.forEach(product => {
-	this.productsService.postProductFromJson(product);
+	if(product.id!=undefined)
+	this.productsService
+	.putProductFromJson(product, product.id)
+	.subscribe(product => console.log(product))
 });
 }
 
 addToUpdateDiscountlist(e:any,produit:Product){
-	let newDiscount = e.target.value
+	let newDiscount:number = parseInt(e.target.value)
 	let index = this.toUpdateProductList.indexOf(produit)
 
-
-	if(index > -1){
 		if(newDiscount==null){
-			this.toUpdateProductList.splice(index,1)
+			if(index > -1){
+				this.toUpdateProductList.splice(index,1)
+			}
 		}
-		else{
-			this.toUpdateProductList[index].discount = newDiscount
+		else if (newDiscount >= 0 &&newDiscount<=100){
+			if(index > -1){
+				if(produit.discount!=undefined)
+				if(produit.discount >= 0 && produit.discount <= 100){
+					if(produit.price!=undefined){
+						produit.price_on_sale = produit.price - ((produit.price*newDiscount)/100)
+					}
+					produit = this.toUpdateProductList[index]
+				}
+				produit.discount = newDiscount
+				this.toUpdateProductList[index] = produit
+			}
+			else if (index < 0 && newDiscount<=100){
+				produit.discount = newDiscount
+				if(produit.discount >= 0 && produit.discount <= 100){
+					if(produit.price!=undefined){
+						produit.price_on_sale = produit.price - ((produit.price*newDiscount)/100)
+					}
+					this.toUpdateProductList.push(produit)
+				}
+			}
 		}
-	}
-	else if (index < 0 && newDiscount!=null){
-		produit.discount = newDiscount
-		this.toUpdateProductList.push(produit)
-	}	
 }
 
 getCategoryNameById(produitList:string){
-	let res = ""
 	let correspondance = this.productsService.productCategory;
 	let key = this.categoryProd.indexOf(produitList)
 	return correspondance[key]
