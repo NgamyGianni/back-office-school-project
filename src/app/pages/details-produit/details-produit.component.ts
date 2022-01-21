@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../core/Interfaces/product';
+import { Purchase } from '../../core/Interfaces/purchase';
+import { Sale } from '../../core/Interfaces/sale';
 import { ProductsService} from '../../core/services/products.service';
 
 @Component({
@@ -17,9 +19,7 @@ export class DetailsProduitComponent implements OnInit {
 	addStockProductNumber: number = 1;
 	addDiscountNumber: number = 0;
 
-	constructor(public productsService : ProductsService) {
-
-	}
+	constructor(public productsService : ProductsService) { }
 
 	getProducts(){
 		this.productsService.getProductsFromJson().subscribe({
@@ -45,9 +45,35 @@ export class DetailsProduitComponent implements OnInit {
 
 	putAddRemoveStockProduct(){
 		if(this.product.quantity_stock!=undefined){
-			this.product.quantity_stock += this.addStockProductNumber
-			if(this.product.quantity_stock<0){
+			if(this.addStockProductNumber == 0){
 				this.product.quantity_stock = 0
+			}
+			else{
+				if(this.addStockProductNumber > 0){
+					let purchase: Purchase = {};
+					purchase["category"] = this.product.category;
+					if(this.product.price != undefined)	purchase["price"] = (this.product.price/2) * this.addStockProductNumber;
+					purchase["owner"] = "tig";
+					purchase["name"] = this.product.name;
+					purchase["quantity_sold"] = this.addStockProductNumber;
+
+					this.productsService.postPurchaseFromJson(purchase).subscribe(product => console.log(product));
+				}else{
+					let sale: Sale={};
+					sale["category"] = this.product.category;
+					if(this.product.price != undefined)	sale["price"] = this.product.price * Math.abs(this.addStockProductNumber);
+					sale["owner"] = "tig";
+					sale["name"] = this.product.name;
+					sale["quantity_sold"] = Math.abs(this.addStockProductNumber);
+
+					if(Math.abs(this.addStockProductNumber) > this.product.quantity_stock && this.product.price != undefined)	sale["price"] = this.product.price * this.product.quantity_stock;
+					this.productsService.postSaleFromJson(sale).subscribe(product => console.log(product));
+				}
+
+				this.product.quantity_stock += this.addStockProductNumber
+				if(this.product.quantity_stock<0){
+					this.product.quantity_stock = 0
+				}
 			}
 		}
 

@@ -24,6 +24,11 @@ export class HeaderComponent implements OnInit {
                         ,"color":"black"
                       }
     }
-    
+    else if (this.router.url=="/dashboard"){
+       this.background={
+                        "background-color":"aqua"
+                        ,"color":"black"
+                      }
+    }
   }
 }
