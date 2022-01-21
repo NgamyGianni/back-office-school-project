@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-button-manage-home',
@@ -7,12 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ButtonManageHomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
 
   manageProduct(){
     console.log("I click manage product")
+    this.router.navigate(['/dashboard'])
   }
 }
