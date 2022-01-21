@@ -25,3 +25,12 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Lunch the backend
+
+First, go the backend folder where is bin folder to activate your virtual environment
+Then, go to src folder in the backend, run this command:
+"python manage.py runserver"
+Finally, you will run "ng serve -o" your angular project.
+
+Those steps will help to connect this app with django project
