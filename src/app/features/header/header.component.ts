@@ -6,24 +6,28 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  background: Record<string, string> = {};
+  background: Record<string, string>={};
   constructor(public router:Router) { }
 
   ngOnInit(): void {
-  }
-  backgroundLink(){
-    if(this.router.url=="/home"){
-       this.background={
+    this.background={
                         "background-color":"aqua",
-                        "color":"black"
+                        "color":"green"
                       }
-    }
-    else if (this.router.url=="/details"){
-       this.background={
-                        "background-color":"aqua"
-                        ,"color":"black"
-                      }
-    }
-    
   }
-}
+//   backgroundLink(){
+//     if(this.router.url=="/home"){
+//        this.background={
+//                         // "background-color":"aqua",
+//                         "color":"black"
+//                       }
+//     }
+//     // else if (this.router.url=="/details"){
+//     //    this.background={
+//     //                     "background-color":"aqua"
+//     //                     ,"color":"black"
+//     //                   }
+//     // }
+    
+//   }
+ }
