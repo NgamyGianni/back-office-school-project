@@ -8,7 +8,7 @@
 	<a routerLink="/home"> 
 		<p> Tableaux produits </p> 
 	</a> 
-	<a routerLink="/home"> 
+	<a [ngStyle]="router.url=='/dashboard'?background:{}" routerLink="/dashboard"> 
 		<p> données à l'historique</p> 
 	</a>
 

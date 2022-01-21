@@ -12,6 +12,7 @@ import { ProductsService } from '../app/core/services/products.service';
 import { ButtonDetailsHomeComponent } from './shared/button-details-home/button-details-home.component';
 import { ButtonManageHomeComponent } from './shared/button-manage-home/button-manage-home.component';
 import { FormsModule } from '@angular/forms';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FormsModule } from '@angular/forms';
     DetailsProduitComponent,
     ButtonDetailsHomeComponent,
     ButtonManageHomeComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
