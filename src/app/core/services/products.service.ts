@@ -35,7 +35,6 @@ getProductCategory(){
         .pipe(
         );
     }
-<<<<<<< HEAD
 
    postSaleFromJson(sale : Sale){
    		return this.http.post<Sale>(this.url+"sales/", sale);
@@ -45,20 +44,5 @@ getProductCategory(){
    		return this.http.post<Purchase>(this.url+"purchases/", purchase);
    }
 }
-=======
->>>>>>> dev-page-tableau
 
-    putStockProduct(product: Product){
-      
-    }
-
-    putPromotionProduct(product: Product){
-
-    }
-
-    postProductFromJson(product : Product){
-      return this.http.put<Product>(this.url, product)
-          .pipe(
-          );
-      }
-}
+    

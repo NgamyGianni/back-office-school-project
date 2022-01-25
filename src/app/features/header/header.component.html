@@ -5,8 +5,8 @@
 	<a [ngStyle]="router.url=='/details'?background:{}" routerLink="/details">
 		<p [ngStyle]="router.url=='/details'?colorText:{}">Détails produits</p> 
 	</a> 
-	<a routerLink="/home"> 
-		<p> Tableaux produits </p> 
+	<a [ngStyle]="router.url=='/manageStocks'?background:{}" routerLink="/manageStocks"> 
+		<p [ngStyle]="router.url=='/manageStocks'?colorText:{}"> Tableaux produits </p> 
 	</a> 
 	<a [ngStyle]="router.url=='/dashboard'?background:{}" routerLink="/dashboard"> 
 		<p [ngStyle]="router.url=='/dashboard'?colorText:{}"> données à l'historique</p> 
